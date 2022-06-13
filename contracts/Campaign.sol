@@ -9,11 +9,11 @@ contract CampaignFactory {
         string title,
         uint requiredAmount,
         address indexed owner,
-        // address vendor,
         address campaignAddress,
         string imgURI,
         uint indexed timestamp,
-        string indexed category
+        string indexed category,
+        address vendor
     );
 
 
@@ -22,14 +22,14 @@ contract CampaignFactory {
         uint requiredCampaignAmount,
         string memory imgURI,
         string memory category,
-        string memory storyURI
-        // address payable vendor
+        string memory storyURI,
+        address payable vendor
     ) public
     {
 
         Campaign newCampaign = new Campaign(
-            campaignTitle, requiredCampaignAmount, imgURI, storyURI, msg.sender
-            // vendor
+            campaignTitle, requiredCampaignAmount, imgURI, storyURI, msg.sender,
+            vendor
         );
 
 
@@ -42,7 +42,8 @@ contract CampaignFactory {
             address(newCampaign),
             imgURI,
             block.timestamp,
-            category
+            category,
+            vendor
         );
     }
 }
@@ -53,9 +54,9 @@ contract Campaign {
     uint public requiredAmount;
     string public image;
     string public story;
-    address payable  public owner;
-    // address payable public vendor;
+    address  public owner;
     uint public receivedAmount;
+    address payable public vendor;
 
     event donated(address indexed donar, uint indexed amount, uint indexed timestamp);
 
@@ -64,20 +65,20 @@ contract Campaign {
         uint requiredCampaignAmount,
         string memory imgURI,
         string memory storyURI,
-        address campaignOwner
-        // address campaignVendor
+        address campaignOwner,
+        address campaignVendor
     ) {
         title = campaignTitle;
         requiredAmount = requiredCampaignAmount;
         image = imgURI;
         story = storyURI;
-        owner = payable(campaignOwner);
-        // vendor = payable(campaignVendor);
+        owner = campaignOwner;
+        vendor = payable(campaignVendor);
     }
 
     function donate() public payable {
         require(requiredAmount > receivedAmount, "required amount fullfilled");
-        owner.transfer(msg.value);
+        vendor.transfer(msg.value);
         receivedAmount += msg.value;
         emit donated(msg.sender, msg.value, block.timestamp);
     }

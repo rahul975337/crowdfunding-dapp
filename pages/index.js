@@ -111,7 +111,8 @@ export async function getStaticProps() {
     null,
     null,
     null,
-    "Health"
+    "Health",
+    null
   );
   const HealthCampaigns = await contract.queryFilter(getHealthCampaigns);
   const HealthData = HealthCampaigns.map((e) => {
@@ -122,6 +123,7 @@ export async function getStaticProps() {
       timeStamp: parseInt(e.args.timestamp),
       amount: ethers.utils.formatEther(e.args.requiredAmount),
       address: e.args.campaignAddress,
+      vendor: e.args.vendor,
     };
   });
 
@@ -132,7 +134,8 @@ export async function getStaticProps() {
     null,
     null,
     null,
-    "education"
+    "education",
+    null
   );
   const EducationCampaigns = await contract.queryFilter(getEducationCampaigns);
   const EducationData = EducationCampaigns.map((e) => {
@@ -143,6 +146,7 @@ export async function getStaticProps() {
       timeStamp: parseInt(e.args.timestamp),
       amount: ethers.utils.formatEther(e.args.requiredAmount),
       address: e.args.campaignAddress,
+      vendor: e.args.vendor,
     };
   });
 
@@ -153,7 +157,8 @@ export async function getStaticProps() {
     null,
     null,
     null,
-    "Animal"
+    "Animal",
+    null
   );
   const AnimalCampaigns = await contract.queryFilter(getAnimalCampaigns);
   const AnimalData = AnimalCampaigns.map((e) => {
@@ -164,6 +169,7 @@ export async function getStaticProps() {
       timeStamp: parseInt(e.args.timestamp),
       amount: ethers.utils.formatEther(e.args.requiredAmount),
       address: e.args.campaignAddress,
+      vendor: e.args.vendor,
     };
   });
 

@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "C:\\Users\\tilwa\\OneDrive\\Desktop\\DEV\\final-year-proj\\web3-fundraiser-youtube\\contracts\\Campaign.sol": {
-      "lastModificationDate": 1655115336318,
-      "contentHash": "cd4ff42ecacdc76fe821fd7c03efe1d5",
+      "lastModificationDate": 1655118274345,
+      "contentHash": "9719fd01360279af96e58d20ea2ed751",
       "sourceName": "contracts/Campaign.sol",
       "solcConfig": {
         "version": "0.8.10",

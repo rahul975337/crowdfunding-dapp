@@ -46,6 +46,7 @@ export default function Dashboard() {
           timeStamp: parseInt(e.args.timestamp),
           amount: ethers.utils.formatEther(e.args.requiredAmount),
           address: e.args.campaignAddress,
+          vendor: e.args.vendor,
         };
       });
       setCampaignsData(AllData);
@@ -77,6 +78,15 @@ export default function Dashboard() {
                 </Text>
                 <Text>
                   {e.owner.slice(0, 6)}...{e.owner.slice(39)}
+                </Text>
+              </CardData>
+              <CardData>
+                <Text>
+                  Vendor
+                  <AccountBoxIcon />
+                </Text>
+                <Text>
+                  {e.vendor.slice(0, 6)}...{e.vendor.slice(39)}
                 </Text>
               </CardData>
               <CardData>
